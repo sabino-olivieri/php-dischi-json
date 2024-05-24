@@ -12,12 +12,23 @@ body {
         aspect-ratio: 1/1;
         background-image: url(../img/disc.png);
         background-size: cover;
+        position: relative;
 
 
         .poster {
             width: 70%;
             aspect-ratio: 1/1;
             border-radius: 50%;
+        }
+
+        span {
+            
+            cursor: pointer;
+            padding: 10px;
+            font-size: 20px;
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
         }
     }
 
