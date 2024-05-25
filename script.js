@@ -6,7 +6,7 @@ const app = createApp({
     data() { //dati
         return {
             discList: [],
-            linkApi: "http://localhost/boolean-php/php-dischi-json/server.php",
+            linkApi: "http://localhost/boolean-php/php-dischi-json/backend/server.php",
             filter: "filter-all"
         }
     },
@@ -26,7 +26,7 @@ const app = createApp({
                     "Content-type": "multipart/form-data",
                 },
             }).then((resp) => {
-                // this.discList = resp.data.response;
+                
                 this.discFilter();
             });
 
