@@ -25,12 +25,18 @@
 <body>
     <div id="app">
 
-        <header class="p-3 bg-dark">
-            <select class="form-select" aria-label="Default select example" v-model="filter" @change="discFilter()">
+        <header class="p-3 bg-dark d-flex gap-2">
+            <select class="form-select ms_form" aria-label="Default select example" v-model="filter"
+                @change="discFilter()">
                 <option value="filter-all">Tutti i dischi</option>
                 <option value="filter-favorite">Dischi preferiti</option>
                 <option value="filter-unfavorite">Dischi non preferiti</option>
             </select>
+
+            <div class="btn-new-disc d-flex justify-content-center align-items-center rounded-2" @click="openForm()">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+
         </header>
 
         <div class="container my-5 bg-dark rounded-4">
@@ -56,7 +62,67 @@
                 </div>
 
             </div>
+
+
         </div>
+
+
+        <div class="form-disc vh-100 w-100" :class="formHidden ? 'ms_hidden': ''">
+            <button class="ms_button rounded-2" @click="closeForm()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="container">
+                <div class="row pt-5 py-md-5 p-md-5 g-4">
+                    <div class="col-12 col-md-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control bg-transparent text-white" id="floatingInput"
+                                placeholder="New Jersey" required name="title" v-model.trim="title">
+                            <label for="floatingInput">Titolo album</label>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control bg-transparent text-white" id="floatingInput"
+                                placeholder="Bon Jovi" required name="author" v-model.trim="author">
+                            <label for="floatingInput">Autore</label>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <div class="form-floating">
+                            <input type="number" class="form-control bg-transparent text-white" id="floatingInput"
+                                placeholder="1988" required name="year" v-model.trim="year">
+                            <label for="floatingInput">Anno di pubblicazione</label>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control bg-transparent text-white" id="floatingInput"
+                                placeholder="Rock" required name="genre" v-model.trim="genre">
+                            <label for="floatingInput">Genere</label>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <input type="text" class="form-control bg-transparent text-white" id="floatingInput"
+                                placeholder="www" required name="poster" v-model.trim="poster">
+                            <label for="floatingInput">Link poster</label>
+                        </div>
+                    </div>
+
+                    <div class="col-12 text-center">
+                        <button class="btn btn-outline-light" @click="addDisc()">Invia</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+
     </div>
 
     <script src="./script.js"></script>

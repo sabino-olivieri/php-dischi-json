@@ -3,6 +3,30 @@ body {
     color: white;
 }
 
+header {
+
+    height: 70px;
+
+    .ms_form {
+        background-color: transparent;
+        color: white;
+        cursor: pointer;
+
+        option {
+            background-color: #112030;
+
+        }
+    }
+
+    .btn-new-disc {
+        display: inline-block;
+        height: 100%;
+        aspect-ratio: 1/1;
+        border: 1px solid white;
+        cursor: pointer;
+    }
+}
+
 .ms_card {
 
     background-color: #112030;
@@ -10,7 +34,7 @@ body {
     position: relative;
 
     .heart {
-            
+
         cursor: pointer;
         padding: 10px;
         font-size: 20px;
@@ -26,6 +50,10 @@ body {
         background-size: cover;
         transition: all 50s linear;
 
+        img {
+            object-fit: cover;
+            object-position: center;
+        }
 
         .poster {
             width: 70%;
@@ -36,7 +64,8 @@ body {
 
     }
 
-    h5, h6 {
+    h5,
+    h6 {
         margin: 0;
     }
 
@@ -45,14 +74,14 @@ body {
     }
 
     &:hover {
-        
+
         transform: scale(105%);
 
         .ms_album {
             transform: rotate(1440deg);
         }
 
-    }    
+    }
 }
 
 .not-found {
@@ -61,4 +90,37 @@ body {
     h3 {
         margin: 0;
     }
+}
+
+.form-disc {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #112030;
+    transition: all 0.5s;
+
+    .ms_button {
+        all: unset;
+        cursor: pointer;
+        padding: 10px;
+        font-size: 1.5rem;
+        position: absolute;
+        top: 0;
+        right: 5%;
+    }
+
+    .form-floating>.form-control:focus~label,
+    .form-floating>.form-control:not(:placeholder-shown)~label {
+        color: white;
+    }
+
+    .form-floating>.form-control:focus~label::after,
+    .form-floating>.form-control:not(:placeholder-shown)~label::after {
+        background-color: unset;
+    }
+
+}
+
+.ms_hidden {
+    transform: translateY(-100%);
 }

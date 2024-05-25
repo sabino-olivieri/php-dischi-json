@@ -41,7 +41,7 @@ function save_changes ($disc_list, $disc_visible) {
         }
     }
 
-    file_put_contents("../dischi.json", json_encode($disc_list));
+    file_put_contents("../dischi.json", json_encode($disc_list, JSON_PRETTY_PRINT));
 }
 
 /**
@@ -65,8 +65,6 @@ function show_filtered_array($disc_visible) {
         $disc_visible = get_filtered_array($disc_visible, $favorite);
 
         
-    } else {
-        $disc_visible = $disc_visible;
     }
 
     return $disc_visible;
@@ -91,4 +89,17 @@ function get_filtered_array ($disc_visible, $favorite) {
     }
 
     return $temp_list;
+}
+
+function add_disc($disc_list) {
+    var_dump($disc_list);
+    $disc_list[] = [
+        "title" => $_POST["title"],
+        "author" => $_POST["author"],
+        "year" => intval($_POST["year"]),
+        "poster" => $_POST["poster"],
+        "genre" => $_POST["genre"],
+    ];
+
+    file_put_contents("../dischi.json", json_encode($disc_list, JSON_PRETTY_PRINT));
 }

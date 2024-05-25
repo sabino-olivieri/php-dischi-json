@@ -11,6 +11,9 @@
 
     $disc_visible = toggle_favorite($disc_visible, $disc_list);
 
+    if(isset($_POST["action"]) && $_POST["action"] === "add-disc"){
+        add_Disc($disc_list);
+    }
 
     $api_resp = [
         "response" => $disc_visible,
@@ -20,5 +23,4 @@
 
     header("Content-Type: application/json");
     echo json_encode($api_resp);
-
 ?>
