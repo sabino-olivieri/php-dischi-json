@@ -6,15 +6,17 @@ const app = createApp({
     data() { //dati
         return {
             discList: [],
-            linkApi: "http://localhost/boolean-php/php-dischi-json/server.php"
+            linkApi: "http://localhost/boolean-php/php-dischi-json/server.php",
+            filter: "filter-all"
         }
     },
     methods: {
         toggleLike(curIndex) {
-            
+
             const data = {
                 action: "toggle-favorite",
                 index: curIndex,
+                filter: this.filter,
             };
 
             console.log(data);
@@ -24,35 +26,25 @@ const app = createApp({
                     "Content-type": "multipart/form-data",
                 },
             }).then((resp) => {
-                this.discList = resp.data.response;
+                // this.discList = resp.data.response;
+                this.discFilter();
             });
 
 
         },
 
-        saveDiscList() {
-            const data = {
-                newList: this.discList,
-            };
-
-            axios
-                .post(
-                    this.linkApi,
-                    data,
-                    {
-                        headers: {
-                            "Content-type": "multipart/form-data",
-                        },
-                    }
-                )
-                .then((resp) => {
-                    this.discList = resp.data.response;
-                });
+        discFilter() {
+            axios.get(this.linkApi, {
+                params: {
+                    filter: this.filter
+                }
+            }).then((resp) => {
+                console.log(resp);
+                this.discList = resp.data.response;
+            });
         }
     },
     created() {
-        axios.get('http://localhost/boolean-php/php-dischi-json/server.php').then((resp) => {
-            this.discList = resp.data.response;
-        })
+        this.discFilter();
     }
 }).mount('#app');

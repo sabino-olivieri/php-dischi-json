@@ -3,16 +3,32 @@ body {
     color: white;
 }
 
+header {
+
+}
+
 .ms_card {
 
     background-color: #112030;
+    transition: all 0.8s;
+    position: relative;
+
+    .heart {
+            
+        cursor: pointer;
+        padding: 10px;
+        font-size: 20px;
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+    }
 
     .ms_album {
         width: 90%;
         aspect-ratio: 1/1;
         background-image: url(../img/disc.png);
         background-size: cover;
-        position: relative;
+        transition: all 50s linear;
 
 
         .poster {
@@ -21,15 +37,7 @@ body {
             border-radius: 50%;
         }
 
-        span {
-            
-            cursor: pointer;
-            padding: 10px;
-            font-size: 20px;
-            position: absolute;
-            right: 0px;
-            bottom: 0px;
-        }
+
     }
 
     h5, h6 {
@@ -39,5 +47,22 @@ body {
     span {
         font-size: 0.8rem;
     }
-    
+
+    &:hover {
+        
+        transform: scale(105%);
+
+        .ms_album {
+            transform: rotate(1440deg);
+        }
+
+    }    
+}
+
+.not-found {
+    background-color: #112030;
+
+    h3 {
+        margin: 0;
+    }
 }
